@@ -6,4 +6,7 @@ const list = new DoublyLinkedList();
 window.list = list;
 
 list.addLastNode('D');
+//list.dump();
+
+list.addFirstNode('new node');
 list.dump();

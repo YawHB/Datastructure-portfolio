@@ -46,6 +46,25 @@ export class DoublyLinkedList {
         return;
     }
 
+    addFirstNode(data) {
+        let newNode = new Node(data);
+
+        //Hvis listen er tom, så sæt newNode som eneste element
+        if (this.head === null) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            //definerer nuværende første node
+            let currentFirst = this.head;
+            //Ændrer første node til at være den nyoprettede node
+            this.head = newNode;
+            //Sørger for, at den nye node næste node peger på den tidligere første
+            newNode.next = currentFirst;
+            //Sørger for, at den tidligere første node prev er vores nye node
+            currentFirst.prev = newNode;
+        }
+    }
+
     dump() {
         let node = this.head;
         console.log('Linked List');
@@ -55,7 +74,7 @@ export class DoublyLinkedList {
         console.log('============');
 
         while (node !== null) {
-            console.log(`Current node: ${node.data}`);
+            console.log(`Current node: ${node.data} <---`);
             console.log('-------');
             console.log(`prev: ${node.prev?.data}`);
             console.log(`next: ${node.next?.data}`);
