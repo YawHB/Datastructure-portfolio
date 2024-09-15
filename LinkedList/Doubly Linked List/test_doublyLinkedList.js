@@ -15,6 +15,7 @@ const nodeFirst = {
     next: null,
     data: 'New node',
 };
+list.dump();
 list.addLastNode(nodeD);
 
 list.addFirstNode(nodeFirst);

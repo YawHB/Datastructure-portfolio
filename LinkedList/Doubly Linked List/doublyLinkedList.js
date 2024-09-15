@@ -23,8 +23,8 @@ node3.prev = node2;
 
 export class DoublyLinkedList {
     constructor() {
-        this.head = node1; // TODO: test-code - change later!
-        this.tail = node3; // TODO: test-code - change later!
+        this.head = null; // TODO: test-code - change later!
+        this.tail = null; // TODO: test-code - change later!
     }
 
     addLastNode(newNode) {
@@ -66,7 +66,6 @@ export class DoublyLinkedList {
             let currentFirst = this.head;
             //Ændrer første node til at være den nyoprettede node
             this.head = newNode;
-            console.log(`new node inside addFirstNode: ${newNode.data}`);
 
             //Sørger for, at den nye node næste node peger på den tidligere første
             newNode.next = currentFirst;
@@ -81,7 +80,6 @@ export class DoublyLinkedList {
     }
     addFirst(data) {
         const newNode = new Node(data);
-        console.log(`new node inside ADD FIRST ${newNode.data}`);
 
         this.addFirstNode(newNode);
     }
