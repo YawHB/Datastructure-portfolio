@@ -1,25 +1,25 @@
-const node1 = {
-    prev: null,
-    next: null,
-    data: 'A',
-};
+// const node1 = {
+//     prev: null,
+//     next: null,
+//     data: 'A',
+// };
 
-const node2 = {
-    prev: null,
-    next: null,
-    data: 'B',
-};
+// const node2 = {
+//     prev: null,
+//     next: null,
+//     data: 'B',
+// };
 
-const node3 = {
-    prev: null,
-    next: null,
-    data: 'C',
-};
+// const node3 = {
+//     prev: null,
+//     next: null,
+//     data: 'C',
+// };
 
-node1.next = node2;
-node2.prev = node1;
-node2.next = node3;
-node3.prev = node2;
+// node1.next = node2;
+// node2.prev = node1;
+// node2.next = node3;
+// node3.prev = node2;
 
 export class DoublyLinkedList {
     constructor() {
@@ -35,23 +35,16 @@ export class DoublyLinkedList {
             this.head = newNode;
             this.tail = newNode;
             newNode.next = null;
+        } else {
+            //Tilføjer den nye node lige efter den sidste
+            this.tail.next = newNode;
+            //sørger for at den nye node peger på den tidligere sidste node.
+            newNode.prev = this.tail;
+            //Sætter den nye nodes næste til at være null
+            newNode.next = null;
+            //får this.tail til at pege på newNode
+            this.tail = newNode;
         }
-
-        //Hvis listen har noder, loop igennem og find den sidste
-        let node = this.head;
-        while (node.next !== null) {
-            node = node.next;
-        }
-        //Sæt den tidlige sidste node til at pege på den nye sidste
-        node.next = newNode;
-        //Sæt den nye nodes prev til at pege på den tidligere sidste node
-        newNode.prev = node;
-        //Sørg for at den nye node peger på null
-        newNode.next = null;
-        //This.tail skal nu pege på vores nye node, som er den sidste.
-        this.tail = newNode;
-
-        return;
     }
 
     addFirstNode(newNode) {
@@ -88,25 +81,25 @@ export class DoublyLinkedList {
         let node = this.head;
         console.log('Linked List');
 
-        console.log(`head: ${this.head?.data}`);
-        console.log(`tail: ${this.tail?.data}`);
+        console.log(`head: ${this.head ? this.head.data : null}`);
+        console.log(`tail: ${this.tail ? this.tail.data : null}`);
         console.log('============');
 
         while (node !== null) {
             console.log(`Current node: ${node.data} <---`);
             console.log('-------');
-            console.log(`prev: ${node.prev?.data}`);
-            console.log(`next: ${node.next?.data}`);
+            console.log(`prev: ${node.prev ? node.prev.data : null}`);
+            console.log(`next: ${node.next ? node.next.data : null}`);
             console.log('============');
             node = node.next;
         }
     }
 }
 
-class Node {
+export class Node {
     constructor(data) {
-        // this.prev = prev;
-        // this.next = next;
+        this.prev = null;
+        this.next = null;
         this.data = data;
     }
 }

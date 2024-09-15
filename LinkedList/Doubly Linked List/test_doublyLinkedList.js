@@ -1,24 +1,14 @@
-import { DoublyLinkedList } from './doublyLinkedList.js';
-
-console.log('Running');
+import { DoublyLinkedList, Node } from './doublyLinkedList.js';
 
 const list = new DoublyLinkedList();
 window.list = list;
+const nodeA = new Node('A');
+const nodeB = new Node('B');
+const nodeC = new Node('C');
+const nodeD = new Node('D');
 
-const nodeD = {
-    prev: null,
-    next: null,
-    data: 'D',
-};
-const nodeFirst = {
-    prev: null,
-    next: null,
-    data: 'New node',
-};
-list.dump();
+list.addLastNode(nodeA);
+list.addLastNode(nodeB);
+list.addLastNode(nodeC);
 list.addLastNode(nodeD);
-
-list.addFirstNode(nodeFirst);
-
-list.addFirst('-B');
 list.dump();
