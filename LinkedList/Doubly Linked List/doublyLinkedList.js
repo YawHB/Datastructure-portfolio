@@ -27,12 +27,31 @@ export class DoublyLinkedList {
         this.tail = node3; // TODO: test-code - change later!
     }
 
+    addLastNode(data) {
+        let newNode = new Node(data, this.head, this.tail);
+
+        if (this.head === null) {
+            return (this.head = newNode);
+        }
+
+        let node = this.head;
+
+        while (node.next !== null) {
+            node = node.next;
+        }
+        node.next = newNode;
+        newNode.prev = node;
+        newNode.next = null;
+
+        return;
+    }
+
     dump() {
         let node = this.head;
         console.log('Linked List');
 
-        console.log(`head: ${this.head.data}`);
-        console.log(`tail: ${this.tail.data}`);
+        console.log(`head: ${this.head?.data}`);
+        console.log(`tail: ${this.tail?.data}`);
         console.log('============');
 
         while (node !== null) {
@@ -43,5 +62,13 @@ export class DoublyLinkedList {
             console.log('============');
             node = node.next;
         }
+    }
+}
+
+class Node {
+    constructor(data) {
+        // this.prev = prev;
+        // this.next = next;
+        this.data = data;
     }
 }
