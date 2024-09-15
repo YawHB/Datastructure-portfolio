@@ -27,27 +27,35 @@ export class DoublyLinkedList {
         this.tail = node3; // TODO: test-code - change later!
     }
 
-    addLastNode(data) {
-        let newNode = new Node(data, this.head, this.tail);
+    addLastNode(newNode) {
+        //let newNode = new Node(data, this.head, this.tail);
 
+        //Hvis listen er tom, sæt nye node til at være hele listen
         if (this.head === null) {
-            return (this.head = newNode);
+            this.head = newNode;
+            this.tail = newNode;
+            newNode.next = null;
         }
 
+        //Hvis listen har noder, loop igennem og find den sidste
         let node = this.head;
-
         while (node.next !== null) {
             node = node.next;
         }
+        //Sæt den tidlige sidste node til at pege på den nye sidste
         node.next = newNode;
+        //Sæt den nye nodes prev til at pege på den tidligere sidste node
         newNode.prev = node;
+        //Sørg for at den nye node peger på null
         newNode.next = null;
+        //This.tail skal nu pege på vores nye node, som er den sidste.
+        this.tail = newNode;
 
         return;
     }
 
-    addFirstNode(data) {
-        let newNode = new Node(data);
+    addFirstNode(newNode) {
+        //let newNode = new Node(data);
 
         //Hvis listen er tom, så sæt newNode som eneste element
         if (this.head === null) {
@@ -58,11 +66,24 @@ export class DoublyLinkedList {
             let currentFirst = this.head;
             //Ændrer første node til at være den nyoprettede node
             this.head = newNode;
+            console.log(`new node inside addFirstNode: ${newNode.data}`);
+
             //Sørger for, at den nye node næste node peger på den tidligere første
             newNode.next = currentFirst;
             //Sørger for, at den tidligere første node prev er vores nye node
             currentFirst.prev = newNode;
         }
+    }
+
+    addLast(data) {
+        const newNode = new Node(data);
+        this.addLastNode(newNode);
+    }
+    addFirst(data) {
+        const newNode = new Node(data);
+        console.log(`new node inside ADD FIRST ${newNode.data}`);
+
+        this.addFirstNode(newNode);
     }
 
     dump() {

@@ -5,8 +5,19 @@ console.log('Running');
 const list = new DoublyLinkedList();
 window.list = list;
 
-list.addLastNode('D');
-//list.dump();
+const nodeD = {
+    prev: null,
+    next: null,
+    data: 'D',
+};
+const nodeFirst = {
+    prev: null,
+    next: null,
+    data: 'New node',
+};
+list.addLastNode(nodeD);
 
-list.addFirstNode('new node');
+list.addFirstNode(nodeFirst);
+
+list.addFirst('-B');
 list.dump();
