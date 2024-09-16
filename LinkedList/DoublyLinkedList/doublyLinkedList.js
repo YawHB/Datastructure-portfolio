@@ -77,7 +77,30 @@ export class DoublyLinkedList {
         }
     }
 
-    dump() {
+    removeNode(nodeToRemove) {
+        //Hvis listen er tom, returner -1
+        if (!this.head) return -1;
+        if (nodeToRemove === this.head) this.removeFirst(nodeToRemove); //Hvis noden er det første, så kald removeFirst, da node.prev.next vil fejle her
+        if (nodeToRemove === this.tail) this.removeLast(nodeToRemove); //Hvis noden er det sidste, så kald removeLast, da node.next.prev vil fejle her
+
+        let node = this.head;
+        while (node.next !== null) {
+            //Loop mens der er nodes i listen
+            node = node.next;
+            if (node === nodeToRemove) {
+                //Hvis vi finder noden vi vil slette
+                //Så sæt den node som kommer før den vi sletter, og få den til at kigge på den node der kommer efter den vi sletter
+                node.prev.next = node.next;
+                //og sæt den node som kommer efter den vi sletter, til at kigge på den noder der kommer før den vi sletter
+                node.next.prev = node.prev;
+                //Nu bør nodeToRemove.prev og nodeToRemove.next se på hinanden
+                return;
+            }
+        }
+        return -1;
+    }
+
+    showList() {
         let node = this.head;
         console.log('Linked List');
 
