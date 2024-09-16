@@ -100,6 +100,23 @@ export class DoublyLinkedList {
         return -1;
     }
 
+    insertBeforeNode(targetNode, newNode) {
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        let node = this.head;
+        while (node.next !== null) {
+            node = node.next;
+            if (node === targetNode) {
+                node.prev.next = newNode; //Den nuværende nodes tidligere nodes næste, skal pege på newNode
+                newNode.prev = node.prev; // nye nodes tidligere, skal være nuværendes nodes tidligere
+                newNode.next = node; //Sæt den nyes node næste node til at være de nuværende node
+                node.prev = newNode; //Sæt den nuværende node til at pege på den nye node
+            }
+        }
+    }
+
     showList() {
         let node = this.head;
         console.log('Linked List');
