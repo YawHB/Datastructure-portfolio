@@ -54,6 +54,17 @@ export class DoublyLinkedList {
         this.addFirstNode(newNode);
     }
 
+    removeFirst() {
+        if (!this.head) return -1;
+        if (this.head === this.tail) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            console.log('inside else');
+            this.head = this.head.next;
+        }
+    }
+
     removeLast() {
         if (!this.head) {
             return -1;

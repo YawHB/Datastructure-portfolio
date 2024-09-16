@@ -11,10 +11,5 @@ list.addLastNode(nodeA);
 list.addLastNode(nodeB);
 list.addLastNode(nodeC);
 list.addLastNode(nodeD);
-list.removeLast();
-list.removeLast();
-list.removeLast();
-list.removeLast();
-console.log(list.removeLast());
 
 list.dump();
