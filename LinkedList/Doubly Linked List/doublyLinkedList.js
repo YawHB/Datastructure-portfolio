@@ -1,26 +1,3 @@
-// const node1 = {
-//     prev: null,
-//     next: null,
-//     data: 'A',
-// };
-
-// const node2 = {
-//     prev: null,
-//     next: null,
-//     data: 'B',
-// };
-
-// const node3 = {
-//     prev: null,
-//     next: null,
-//     data: 'C',
-// };
-
-// node1.next = node2;
-// node2.prev = node1;
-// node2.next = node3;
-// node3.prev = node2;
-
 export class DoublyLinkedList {
     constructor() {
         this.head = null; // TODO: test-code - change later!
@@ -34,14 +11,14 @@ export class DoublyLinkedList {
         if (this.head === null) {
             this.head = newNode;
             this.tail = newNode;
-            newNode.next = null;
+            // newNode.next = null;
         } else {
             //Tilføjer den nye node lige efter den sidste
             this.tail.next = newNode;
             //sørger for at den nye node peger på den tidligere sidste node.
             newNode.prev = this.tail;
             //Sætter den nye nodes næste til at være null
-            newNode.next = null;
+            //newNode.next = null;
             //får this.tail til at pege på newNode
             this.tail = newNode;
         }
@@ -75,6 +52,18 @@ export class DoublyLinkedList {
         const newNode = new Node(data);
 
         this.addFirstNode(newNode);
+    }
+
+    removeLast() {
+        if (!this.head) {
+            return -1;
+        } else if (this.head === this.tail) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+        }
     }
 
     dump() {
