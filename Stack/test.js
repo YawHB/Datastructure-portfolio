@@ -7,4 +7,7 @@ console.log(stack);
 stack.push('A');
 stack.push('B');
 stack.push('C');
-console.log(stack.peek().data);
+console.log(stack.getSize());
+console.log(stack.getIndex(0));
+console.log(stack.getIndex(1));
+console.log(stack.getIndex(2));

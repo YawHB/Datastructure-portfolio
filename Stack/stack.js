@@ -24,6 +24,29 @@ export class Stack {
     peek() {
         return this.tail;
     }
+
+    getSize() {
+        let count = 0;
+        let node = this.tail;
+        while (node) {
+            count++;
+            node = node.next;
+        }
+        return count;
+    }
+
+    getIndex(index) {
+        let count = 0;
+        let node = this.tail;
+        while (node) {
+            if (index == count) {
+                return node;
+            }
+            count++;
+            node = node.next;
+        }
+        return count;
+    }
 }
 
 class Node {
